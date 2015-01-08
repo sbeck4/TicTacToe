@@ -30,6 +30,8 @@
 @property int l7;
 @property int l8;
 @property int l9;
+@property int counter;
+@property BOOL playerOnePlaying;
 
 
 @end
@@ -37,8 +39,19 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
+    self.playerOnePlaying = YES;
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+     self.oLabel.hidden = YES;
+     self.l1 = 3;
+     self.l2 = 4;
+     self.l3 = 5;
+     self.l4 = 6;
+     self.l5 = 7;
+     self.l6 = 8;
+     self.l7 = 9;
+     self.l8 = 10;
+     self.l9 = 11;
+    self.counter = 0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,136 +63,208 @@
 {
     if (CGRectContainsRect(self.labelOne.frame, label.frame))
     {
-        if (player && self.l1 == 0)
+        if (player && (self.l1 == 3))
         {
+            self.counter++;
+            self.xLabel.hidden = YES;
+            self.oLabel.hidden = NO;
             self.labelOne.text = @"X";
             self.l1 = 1;
+            self.playerOnePlaying = NO;
         }
 
-        if (!player && self.l1 == 0)
+        if (!player && (self.l1 == 3))
         {
+            self.counter++;
+            self.oLabel.hidden = YES;
+            self.xLabel.hidden = NO;
             self.labelOne.text = @"O";
             self.l1 = 2;
+            self.playerOnePlaying = YES;
         }
     }
 
     if (CGRectContainsRect(self.labelTwo.frame, label.frame))
     {
-        if (player && self.l2 == 0)
+        if (player && (self.l2 == 4))
         {
+            self.counter++;
+            self.xLabel.hidden = YES;
+            self.oLabel.hidden = NO;
             self.labelTwo.text = @"X";
             self.l2 = 1;
+            self.playerOnePlaying = NO;
         }
 
-        if (!player && self.l2 == 0)
+        if (!player && (self.l2 == 4))
         {
+            self.counter++;
+            self.oLabel.hidden = YES;
+            self.xLabel.hidden = NO;
             self.labelTwo.text = @"O";
             self.l2 = 2;
+            self.playerOnePlaying = YES;
         }
     }
 
     if (CGRectContainsRect(self.labelThree.frame, label.frame))
     {
-        if (player && self.l3 == 0)
+        if (player && (self.l3 == 5))
         {
+            self.counter++;
+            self.xLabel.hidden = YES;
+            self.oLabel.hidden = NO;
             self.labelThree.text = @"X";
             self.l3 = 1;
+            self.playerOnePlaying = NO;
         }
 
-        if (!player && self.l3 == 0)
+        if (!player && (self.l3 == 5))
         {
+            self.counter++;
+            self.oLabel.hidden = YES;
+            self.xLabel.hidden = NO;
             self.labelThree.text = @"O";
             self.l3 = 2;
+            self.playerOnePlaying = YES;
         }
     }
 
     if (CGRectContainsRect(self.labelFour.frame, label.frame))
     {
-        if (player && self.l4 == 0)
+        if (player && (self.l4 == 6))
         {
+            self.counter++;
+            self.xLabel.hidden = YES;
+            self.oLabel.hidden = NO;
             self.labelFour.text = @"X";
             self.l4 = 1;
+            self.playerOnePlaying = NO;
         }
 
-        if (!player && self.l4 == 0)
+        if (!player && (self.l4 == 6))
         {
+            self.counter++;
+            self.oLabel.hidden = YES;
+            self.xLabel.hidden = NO;
             self.labelFour.text = @"O";
             self.l4 = 2;
+            self.playerOnePlaying = YES;
         }
     }
 
     if (CGRectContainsRect(self.labelFive.frame, label.frame))
     {
-        if (player && self.l5 == 0)
+        if (player && (self.l5 == 7))
         {
+            self.counter++;
+            self.xLabel.hidden = YES;
+            self.oLabel.hidden = NO;
             self.labelFive.text = @"X";
             self.l5 = 1;
+            self.playerOnePlaying = NO;
         }
 
-        if (!player && self.l5 == 0)
+        if (!player && (self.l5 == 7))
         {
+            self.counter++;
+            self.oLabel.hidden = YES;
+            self.xLabel.hidden = NO;
             self.labelFive.text = @"O";
             self.l5 = 2;
+            self.playerOnePlaying = YES;
         }
     }
 
     if (CGRectContainsRect(self.labelSix.frame, label.frame))
     {
-        if (player && self.l6 == 0)
+        if (player && (self.l6 == 8))
         {
+            self.counter++;
+            self.xLabel.hidden = YES;
+            self.oLabel.hidden = NO;
             self.labelSix.text = @"X";
             self.l6 = 1;
+            self.playerOnePlaying = NO;
         }
 
-        if (!player && self.l5 == 0)
+        if (!player && (self.l5 == 8))
         {
+            self.counter++;
+            self.oLabel.hidden = YES;
+            self.xLabel.hidden = NO;
             self.labelSix.text = @"O";
             self.l6 = 2;
+            self.playerOnePlaying = YES;
         }
     }
 
     if (CGRectContainsRect(self.labelSeven.frame, label.frame))
     {
-        if (player && self.l7 == 0)
+        if (player && (self.l7 == 9))
         {
+            self.counter++;
+            self.xLabel.hidden = YES;
+            self.oLabel.hidden = NO;
             self.labelSeven.text = @"X";
             self.l7 = 1;
+            self.playerOnePlaying = NO;
         }
 
-        if (!player && self.l7 == 0)
+        if (!player && (self.l7 == 9))
         {
+            self.counter++;
+            self.oLabel.hidden = YES;
+            self.xLabel.hidden = NO;
             self.labelSeven.text = @"O";
             self.l7 = 2;
+            self.playerOnePlaying = YES;
         }
     }
 
     if (CGRectContainsRect(self.labelEight.frame, label.frame))
     {
-        if (player && self.l8 == 0)
+        if (player && (self.l8 == 10))
         {
+            self.counter++;
+            self.xLabel.hidden = YES;
+            self.oLabel.hidden = NO;
             self.labelEight.text = @"X";
             self.l8 = 1;
+            self.playerOnePlaying = NO;
         }
 
-        if (!player && self.l8 == 0)
+        if (!player && (self.l8 == 10))
         {
+            self.counter++;
+            self.oLabel.hidden = YES;
+            self.xLabel.hidden = NO;
             self.labelEight.text = @"O";
             self.l8 = 2;
+            self.playerOnePlaying = YES;
         }
     }
 
     if (CGRectContainsRect(self.labelNine.frame, label.frame))
     {
-        if (player && self.l9 == 0)
+        if (player && (self.l9 == 11))
         {
+            self.counter++;
+            self.xLabel.hidden = YES;
+            self.oLabel.hidden = NO;
             self.labelNine.text = @"X";
             self.l9 = 1;
+            self.playerOnePlaying = NO;
         }
 
-        if (!player && self.l9 == 0)
+        if (!player && (self.l9 == 11))
         {
+            self.counter++;
+            self.oLabel.hidden = YES;
+            self.xLabel.hidden = NO;
             self.labelNine.text = @"O";
             self.l9 = 2;
+            self.playerOnePlaying = YES;
         }
     }
 
@@ -189,71 +274,108 @@
 
 - (BOOL)whoWon
 {
+
     if (self.l1 == self.l2 == self.l3)
     {
+         NSLog(@" I'M HERE %i : %i : %i : %i : %i : %i : %i : %i : %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
     else if (self.l4 == self.l5 == self.l6)
     {
+         NSLog(@" NOW I'M HERE %i : %i : %i : %i : %i : %i : %i : %i : %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
     else if (self.l7 == self.l8 == self.l9)
     {
+         NSLog(@"LOOK HERE %i : %i : %i : %i : %i : %i : %i : %i : %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
     else if (self.l1 == self.l4 == self.l7)
     {
+         NSLog(@"HEY HEY%i : %i : %i : %i : %i : %i : %i : %i : %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
     else if (self.l2 == self.l5 == self.l8)
     {
+         NSLog(@"OH WOW %i : %i : %i : %i : %i : %i : %i : %i : %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
     else if (self.l3 == self.l6 == self.l9)
     {
+         NSLog(@"NICE JOB %i : %i : %i : %i : %i : %i : %i : %i : %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
+        return true;
+    }
+    else if (self.l1 == self.l5 == self.l9)
+    {
+        NSLog(@"NICE JOB %i : %i : %i : %i : %i : %i : %i : %i : %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
+        return true;
+    }
+    else if (self.l7 == self.l5 == self.l3)
+    {
+        NSLog(@"NICE JOB %i : %i : %i : %i : %i : %i : %i : %i : %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
     else
     {
+         NSLog(@"SHANNON ROCKS %i : %i : %i : %i : %i : %i : %i : %i : %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return false;
     }
 
 
+}
+
+- (void)itsADraw
+{
+    if (self.counter == 9)
+    {
+        UIAlertView *playerDrawAlert = [[UIAlertView alloc]init];
+        playerDrawAlert.title = @"IT'S A DRAW!";
+        [playerDrawAlert show];
+    }
 }
 
 - (IBAction)panHandler:(UIPanGestureRecognizer *)gesture
 {
     CGPoint touchPoint = [gesture locationInView:self.view];
 
-    while ([self playerOneIsPlaying])
+    if (self.playerOnePlaying == true)
     {
-        self.oLabel.hidden = YES;
-        self.xLabel.hidden = NO;
         self.xLabel.center = touchPoint;
-    }
+        if (gesture.state == UIGestureRecognizerStateEnded)
+        {
+            [self findLabelUsingPoint:touchPoint sendInLabel:self.xLabel whichPlayer:YES];
 
-    while (![self playerOneIsPlaying])
-    {
-        self.xLabel.hidden = YES;
-        self.oLabel.hidden = NO;
-        self.oLabel.center = touchPoint;
-    }
+            if ([self whoWon])
+            {
+                UIAlertView *playerOneWonAlert = [[UIAlertView alloc]init];
+                playerOneWonAlert.title = @"PLAYER ONE WON";
+                [playerOneWonAlert show];
+            }
 
+             [self itsADraw];
+        }
 
-}
-
-
-
-- (BOOL)playerOneIsPlaying
-{
-    if ([self.whichPlayerLabel.text isEqualToString:@"Player X"])
-    {
-        return true;
     }
     else
     {
-        return false;
+        self.oLabel.center = touchPoint;
+        if (gesture.state == UIGestureRecognizerStateEnded)
+        {
+            [self findLabelUsingPoint:touchPoint sendInLabel:self.oLabel whichPlayer:NO];
+
+            NSLog(@"\nHERE");
+            if ([self whoWon])
+            {
+                UIAlertView *playerOneWonAlert = [[UIAlertView alloc]init];
+                playerOneWonAlert.title = @"PLAYER TWO WON";
+                [playerOneWonAlert show];
+            }
+
+            [self itsADraw];
+        }
     }
 }
+
+
 
 @end
