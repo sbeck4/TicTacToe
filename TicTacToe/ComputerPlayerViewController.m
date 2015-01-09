@@ -87,65 +87,73 @@
 - (BOOL)whoWon
 {
 
-    if (self.l1 == self.l2 == self.l3)
+    if ((self.l1 == 2 && self.l2 == 2 && self.l3 == 2) || (self.l1 == 1 && self.l2 == 1 && self.l3 == 1))
     {
         NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
+        NSLog(@"\n1");
         return true;
     }
-    else if (self.l4 == self.l5 == self.l6)
+    else if ((self.l4 == 2 && self.l5 == 2 && self.l6 == 2) || (self.l4 == 1 && self.l5 == 1 && self.l6 == 1))
     {
         NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
+        NSLog(@"\n2");
         return true;
     }
-    else if (self.l7 == self.l8 == self.l9)
+    else if ((self.l7 == 2 && self.l8 == 2 && self.l9 == 2) || (self.l7 == 1 && self.l8 == 1 && self.l9 == 1))
     {
         NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
+        NSLog(@"\n3");
         return true;
     }
-    else if (self.l1 == self.l4 == self.l7)
+    else if ((self.l1 == 2 && self.l4 == 2 && self.l7 == 2) || (self.l1 == 1 && self.l4 == 1 && self.l7 == 1))
     {
         NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
+        NSLog(@"\n4");
         return true;
     }
-    else if (self.l2 == self.l5 == self.l8)
+    else if ((self.l2 == 2 && self.l5 == 2 && self.l8 == 2) || (self.l2 == 1 && self.l5 == 1 && self.l8 == 1))
     {
         NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
-        NSLog(@"HELLLLLLLLLOOO");
+        NSLog(@"\n5");
         return true;
     }
-    else if (self.l3 == self.l6 == self.l9)
+    else if ((self.l3 == 2 && self.l6 == 2 && self.l9 == 2) || (self.l3 == 1 && self.l6 == 1 && self.l9 == 1))
     {
         NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
+        NSLog(@"\n6");
         return true;
     }
-    else if (self.l1 == self.l5 == self.l9)
+    else if ((self.l1 == 2 && self.l5 == 2 && self.l9 == 2) || (self.l1 == 1 && self.l5 == 1 && self.l9 == 1))
     {
         NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
+        NSLog(@"\n7");
         return true;
     }
-    else if (self.l7 == self.l5 == self.l3)
+    else if ((self.l7 == 2 && self.l5 == 2 && self.l3 == 2) || (self.l7 == 1 && self.l5 == 1 && self.l3 == 1))
     {
         NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
+        NSLog(@"\n8");
         return true;
     }
     else
     {
         NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
+        NSLog(@"\n9");
         return false;
     }
-    
+
     
 }
 
-- (void)itsADraw
+- (BOOL)itsADraw
 {
     if (self.counter == 9)
     {
-        [self.timer invalidate];
-        UIAlertView *playerDrawAlert = [[UIAlertView alloc]init];
-        playerDrawAlert.title = @"IT'S A DRAW!";
-        [playerDrawAlert addButtonWithTitle:@"Dismiss"];
-        [playerDrawAlert show];
+        return true;
+    }
+    else
+    {
+        return false;
     }
 }
 
@@ -168,30 +176,35 @@
                 [playerOneWonAlert addButtonWithTitle:@"Dismiss"];
                 [playerOneWonAlert show];
             }
-            [self itsADraw];
-        }
-    }
-    else
-    {
-            [self computerPlays];
-
-            if ([self whoWon])
+            else if ([self itsADraw])
             {
-                NSLog(@"\nHERE");
                 [self.timer invalidate];
-                UIAlertView *playerTwoWonAlert = [[UIAlertView alloc]init];
-                playerTwoWonAlert.title = @"PLAYER TWO WON";
-                [playerTwoWonAlert addButtonWithTitle:@"Dismiss"];
-                [playerTwoWonAlert show];
+                UIAlertView *playerDrawAlert = [[UIAlertView alloc]init];
+                playerDrawAlert.title = @"IT'S A DRAW!";
+                [playerDrawAlert addButtonWithTitle:@"Dismiss"];
+                [playerDrawAlert show];
             }
-            [self itsADraw];
+            else
+            {
+                [self computerPlays];
+            }
+
+
+        }
+
     }
+//    else
+//    {
+//            [self computerPlays];
+//
+//
+//    }
 }
 
 
 - (void)computerPlays
 {
-    if (self.l1 == 1 && self.l4 == 1)
+    if (self.l1 == 1 && self.l4 == 1 && self.l7 == 9)
     {
         self.labelSeven.text = @"O";
         self.l7 = 2;
@@ -203,7 +216,7 @@
         [self startCountdown];
 
     }
-    else if (self.l1 == 1 && self.l2 == 1)
+    else if (self.l1 == 1 && self.l2 == 1 && self.l3 == 5)
     {
         self.labelThree.text = @"O";
         self.l7 = 2;
@@ -214,7 +227,7 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l1 == 1 && self.l5 == 1)
+    else if (self.l1 == 1 && self.l5 == 1 && self.l9 == 11)
     {
         self.labelNine.text = @"O";
         self.l9 = 2;
@@ -225,7 +238,7 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l4 == 1 && self.l5 == 1)
+    else if (self.l4 == 1 && self.l5 == 1 && self.l6 == 8)
     {
         self.labelSix.text = @"O";
         self.l6 = 2;
@@ -236,7 +249,7 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l4 == 1 && self.l7 == 1)
+    else if (self.l4 == 1 && self.l7 == 1 && self.l1 == 3)
     {
         self.labelOne.text = @"O";
         self.l1 = 2;
@@ -247,7 +260,7 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l2 == 1 && self.l5 == 1)
+    else if (self.l2 == 1 && self.l5 == 1 && self.l8 == 10)
     {
         self.labelEight.text = @"O";
         self.l8 = 2;
@@ -258,7 +271,7 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l2 == 1 && self.l3 == 1)
+    else if (self.l2 == 1 && self.l3 == 1 && self.l1 == 3)
     {
         self.labelOne.text = @"O";
         self.l1 = 2;
@@ -269,7 +282,7 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l5 == 1 && self.l8 == 1)
+    else if (self.l5 == 1 && self.l8 == 1 && self.l2 == 4)
     {
         self.labelTwo.text = @"O";
         self.l2 = 2;
@@ -280,7 +293,7 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l5 == 1 && self.l6 == 1)
+    else if (self.l5 == 1 && self.l6 == 1 && self.l4 == 6)
     {
         self.labelFour.text = @"O";
         self.l4 = 2;
@@ -291,7 +304,7 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l9 == 1 && self.l8 == 1)
+    else if (self.l9 == 1 && self.l8 == 1 && self.l7 == 9)
     {
         self.labelSeven.text = @"O";
         self.l7 = 2;
@@ -302,7 +315,7 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l3 == 1 && self.l5 == 1)
+    else if (self.l3 == 1 && self.l5 == 1 && self.l8 == 10)
     {
         self.labelSeven.text = @"O";
         self.l7 = 2;
@@ -313,7 +326,7 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l7 == 1 && self.l5 == 1)
+    else if (self.l7 == 1 && self.l5 == 1 && self.l3 == 5)
     {
         self.labelThree.text = @"O";
         self.l3 = 2;
@@ -324,7 +337,7 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l7 == 1 && self.l8 == 1)
+    else if (self.l7 == 1 && self.l8 == 1 && self.l9 == 11)
     {
         self.labelNine.text = @"O";
         self.l9 = 2;
@@ -335,7 +348,7 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l5 == 1 && self.l9 == 1)
+    else if (self.l5 == 1 && self.l9 == 1 && self.l1 == 3)
     {
         self.labelOne.text = @"O";
         self.l1 = 2;
@@ -346,7 +359,7 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l6 == 1 && self.l9 == 1)
+    else if (self.l6 == 1 && self.l9 == 1 && self.l3 == 5)
     {
         self.labelThree.text = @"O";
         self.l3 = 2;
@@ -357,43 +370,7 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l6 == 1 && self.l3 == 1)
-    {
-        self.labelNine.text = @"O";
-        self.l9 = 2;
-        self.counter++;
-        self.oLabel.hidden = YES;
-        self.xLabel.hidden = NO;
-        self.playerOnePlaying = YES;
-        [self.timer invalidate];
-        [self startCountdown];
-
-
-
-    }
-    else if (self.l1 == 2 && self.l4 == 2)
-    {
-        self.labelSeven.text = @"O";
-        self.l7 = 2;
-        self.counter++;
-        self.oLabel.hidden = YES;
-        self.xLabel.hidden = NO;
-        self.playerOnePlaying = YES;
-        [self.timer invalidate];
-        [self startCountdown];
-    }
-    else if (self.l1 == 2 && self.l2 == 2)
-    {
-        self.labelThree.text = @"O";
-        self.l7 = 2;
-        self.counter++;
-        self.oLabel.hidden = YES;
-        self.xLabel.hidden = NO;
-        self.playerOnePlaying = YES;
-        [self.timer invalidate];
-        [self startCountdown];
-    }
-    else if (self.l1 == 2 && self.l5 == 2)
+    else if (self.l6 == 1 && self.l3 == 1 && self.l9 == 11)
     {
         self.labelNine.text = @"O";
         self.l9 = 2;
@@ -404,7 +381,62 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l4 == 2 && self.l5 == 2)
+    else if (self.l1 == 1 && self.l3 == 1 && self.l2 == 4)
+    {
+        self.labelTwo.text = @"O";
+        self.l2 = 2;
+        self.counter++;
+        self.oLabel.hidden = YES;
+        self.xLabel.hidden = NO;
+        self.playerOnePlaying = YES;
+        [self.timer invalidate];
+        [self startCountdown];
+    }
+    else if (self.l4 == 1 && self.l6 == 1 && self.l5 == 7)
+    {
+        self.labelFive.text = @"O";
+        self.l5 = 2;
+        self.counter++;
+        self.oLabel.hidden = YES;
+        self.xLabel.hidden = NO;
+        self.playerOnePlaying = YES;
+        [self.timer invalidate];
+        [self startCountdown];
+    }
+    else if (self.l7 == 1 && self.l9 == 1 && self.l8 == 10)
+    {
+        self.labelEight.text = @"O";
+        self.l8 = 2;
+        self.counter++;
+        self.oLabel.hidden = YES;
+        self.xLabel.hidden = NO;
+        self.playerOnePlaying = YES;
+        [self.timer invalidate];
+        [self startCountdown];
+    }
+    else if (self.l1 == 1 && self.l7 == 1 && self.l4 == 6)
+    {
+        self.labelFour.text = @"O";
+        self.l4 = 2;
+        self.counter++;
+        self.oLabel.hidden = YES;
+        self.xLabel.hidden = NO;
+        self.playerOnePlaying = YES;
+        [self.timer invalidate];
+        [self startCountdown];
+    }
+    else if (self.l2 == 1 && self.l8 == 1 && self.l5 == 7)
+    {
+        self.labelFive.text = @"O";
+        self.l5 = 2;
+        self.counter++;
+        self.oLabel.hidden = YES;
+        self.xLabel.hidden = NO;
+        self.playerOnePlaying = YES;
+        [self.timer invalidate];
+        [self startCountdown];
+    }
+    else if (self.l3 == 1 && self.l9 == 1 && self.l6 == 8)
     {
         self.labelSix.text = @"O";
         self.l6 = 2;
@@ -415,10 +447,10 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l4 == 2 && self.l7 == 2)
+    else if (self.l7 == 1 && self.l3 == 1 && self.l5 == 7)
     {
-        self.labelOne.text = @"O";
-        self.l1 = 2;
+        self.labelFive.text = @"O";
+        self.l5 = 2;
         self.counter++;
         self.oLabel.hidden = YES;
         self.xLabel.hidden = NO;
@@ -426,10 +458,10 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l2 == 2 && self.l5 == 2)
+    else if (self.l1 == 1 && self.l9 == 1 && self.l5 == 7)
     {
-        self.labelEight.text = @"O";
-        self.l8 = 2;
+        self.labelFive.text = @"O";
+        self.l5 = 2;
         self.counter++;
         self.oLabel.hidden = YES;
         self.xLabel.hidden = NO;
@@ -437,40 +469,7 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l2 == 2 && self.l3 == 2)
-    {
-        self.labelOne.text = @"O";
-        self.l1 = 2;
-        self.counter++;
-        self.oLabel.hidden = YES;
-        self.xLabel.hidden = NO;
-        self.playerOnePlaying = YES;
-        [self.timer invalidate];
-        [self startCountdown];
-    }
-    else if (self.l5 == 2 && self.l8 == 2)
-    {
-        self.labelTwo.text = @"O";
-        self.l2 = 2;
-        self.counter++;
-        self.oLabel.hidden = YES;
-        self.xLabel.hidden = NO;
-        self.playerOnePlaying = YES;
-        [self.timer invalidate];
-        [self startCountdown];
-    }
-    else if (self.l5 == 2 && self.l6 == 2)
-    {
-        self.labelFour.text = @"O";
-        self.l4 = 2;
-        self.counter++;
-        self.oLabel.hidden = YES;
-        self.xLabel.hidden = NO;
-        self.playerOnePlaying = YES;
-        [self.timer invalidate];
-        [self startCountdown];
-    }
-    else if (self.l9 == 2 && self.l8 == 2)
+    else if (self.l1 == 2 && self.l4 == 2 && self.l7 == 9)
     {
         self.labelSeven.text = @"O";
         self.l7 = 2;
@@ -481,21 +480,10 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l3 == 2 && self.l5 == 2)
-    {
-        self.labelSeven.text = @"O";
-        self.l7 = 2;
-        self.counter++;
-        self.oLabel.hidden = YES;
-        self.xLabel.hidden = NO;
-        self.playerOnePlaying = YES;
-        [self.timer invalidate];
-        [self startCountdown];
-    }
-    else if (self.l7 == 2 && self.l5 == 2)
+    else if (self.l1 == 2 && self.l2 == 2 && self.l3 == 5)
     {
         self.labelThree.text = @"O";
-        self.l3 = 2;
+        self.l7 = 2;
         self.counter++;
         self.oLabel.hidden = YES;
         self.xLabel.hidden = NO;
@@ -503,7 +491,7 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l7 == 2 && self.l8 == 2)
+    else if (self.l1 == 2 && self.l5 == 2 && self.l9 == 11)
     {
         self.labelNine.text = @"O";
         self.l9 = 2;
@@ -514,7 +502,18 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l5 == 2 && self.l9 == 2)
+    else if (self.l4 == 2 && self.l5 == 2 && self.l6 == 8)
+    {
+        self.labelSix.text = @"O";
+        self.l6 = 2;
+        self.counter++;
+        self.oLabel.hidden = YES;
+        self.xLabel.hidden = NO;
+        self.playerOnePlaying = YES;
+        [self.timer invalidate];
+        [self startCountdown];
+    }
+    else if (self.l4 == 2 && self.l7 == 2 && self.l1 == 3)
     {
         self.labelOne.text = @"O";
         self.l1 = 2;
@@ -525,7 +524,73 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l6 == 2 && self.l9 == 2)
+    else if (self.l2 == 2 && self.l5 == 2 && self.l8 == 10)
+    {
+        self.labelEight.text = @"O";
+        self.l8 = 2;
+        self.counter++;
+        self.oLabel.hidden = YES;
+        self.xLabel.hidden = NO;
+        self.playerOnePlaying = YES;
+        [self.timer invalidate];
+        [self startCountdown];
+    }
+    else if (self.l2 == 2 && self.l3 == 2 && self.l1 == 3)
+    {
+        self.labelOne.text = @"O";
+        self.l1 = 2;
+        self.counter++;
+        self.oLabel.hidden = YES;
+        self.xLabel.hidden = NO;
+        self.playerOnePlaying = YES;
+        [self.timer invalidate];
+        [self startCountdown];
+    }
+    else if (self.l5 == 2 && self.l8 == 2 && self.l2 == 4)
+    {
+        self.labelTwo.text = @"O";
+        self.l2 = 2;
+        self.counter++;
+        self.oLabel.hidden = YES;
+        self.xLabel.hidden = NO;
+        self.playerOnePlaying = YES;
+        [self.timer invalidate];
+        [self startCountdown];
+    }
+    else if (self.l5 == 2 && self.l6 == 2 && self.l4 == 6)
+    {
+        self.labelFour.text = @"O";
+        self.l4 = 2;
+        self.counter++;
+        self.oLabel.hidden = YES;
+        self.xLabel.hidden = NO;
+        self.playerOnePlaying = YES;
+        [self.timer invalidate];
+        [self startCountdown];
+    }
+    else if (self.l9 == 2 && self.l8 == 2 && self.l7 == 9)
+    {
+        self.labelSeven.text = @"O";
+        self.l7 = 2;
+        self.counter++;
+        self.oLabel.hidden = YES;
+        self.xLabel.hidden = NO;
+        self.playerOnePlaying = YES;
+        [self.timer invalidate];
+        [self startCountdown];
+    }
+    else if (self.l3 == 2 && self.l5 == 2 && self.l7 == 9)
+    {
+        self.labelSeven.text = @"O";
+        self.l7 = 2;
+        self.counter++;
+        self.oLabel.hidden = YES;
+        self.xLabel.hidden = NO;
+        self.playerOnePlaying = YES;
+        [self.timer invalidate];
+        [self startCountdown];
+    }
+    else if (self.l7 == 2 && self.l5 == 2 && self.l3 == 5)
     {
         self.labelThree.text = @"O";
         self.l3 = 2;
@@ -536,7 +601,40 @@
         [self.timer invalidate];
         [self startCountdown];
     }
-    else if (self.l6 == 2 && self.l3 == 2)
+    else if (self.l7 == 2 && self.l8 == 2 && self.l9 == 11)
+    {
+        self.labelNine.text = @"O";
+        self.l9 = 2;
+        self.counter++;
+        self.oLabel.hidden = YES;
+        self.xLabel.hidden = NO;
+        self.playerOnePlaying = YES;
+        [self.timer invalidate];
+        [self startCountdown];
+    }
+    else if (self.l5 == 2 && self.l9 == 2 && self.l1 == 3)
+    {
+        self.labelOne.text = @"O";
+        self.l1 = 2;
+        self.counter++;
+        self.oLabel.hidden = YES;
+        self.xLabel.hidden = NO;
+        self.playerOnePlaying = YES;
+        [self.timer invalidate];
+        [self startCountdown];
+    }
+    else if (self.l6 == 2 && self.l9 == 2 && self.l3 == 5)
+    {
+        self.labelThree.text = @"O";
+        self.l3 = 2;
+        self.counter++;
+        self.oLabel.hidden = YES;
+        self.xLabel.hidden = NO;
+        self.playerOnePlaying = YES;
+        [self.timer invalidate];
+        [self startCountdown];
+    }
+    else if (self.l6 == 2 && self.l3 == 2 && self.l9 == 11)
     {
         self.labelNine.text = @"O";
         self.l9 = 2;
@@ -649,6 +747,23 @@
             [self startCountdown];
         }
     }
+
+    //self.playerOnePlaying = YES;
+
+    if ([self whoWon])
+    {
+        NSLog(@"\nHERE");
+        [self.timer invalidate];
+        UIAlertView *playerTwoWonAlert = [[UIAlertView alloc]init];
+        playerTwoWonAlert.title = @"PLAYER TWO WON";
+        [playerTwoWonAlert addButtonWithTitle:@"Dismiss"];
+        [playerTwoWonAlert show];
+    }
+    else
+    {
+        [self itsADraw];
+    }
+
 
 }
 

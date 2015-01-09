@@ -335,46 +335,53 @@
 
 }
 
+- (void)disableButtons
+{
+    self.oLabel.enabled = NO;
+    self.xLabel.enabled = NO;
+}
+
+
 - (BOOL)whoWon
 {
 
-    if (self.l1 == self.l2 == self.l3)
+    if ((self.l1 == 2 && self.l2 == 2 && self.l3 == 2) || (self.l1 == 1 && self.l2 == 1 && self.l3 == 1))
     {
         NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
-    else if (self.l4 == self.l5 == self.l6)
+    else if ((self.l4 == 2 && self.l5 == 2 && self.l6 == 2) || (self.l4 == 1 && self.l5 == 1 && self.l6 == 1))
     {
         NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
-    else if (self.l7 == self.l8 == self.l9)
+    else if ((self.l7 == 2 && self.l8 == 2 && self.l9 == 2) || (self.l7 == 1 && self.l8 == 1 && self.l9 == 1))
     {
         NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
-    else if (self.l1 == self.l4 == self.l7)
+    else if ((self.l1 == 2 && self.l4 == 2 && self.l7 == 2) || (self.l1 == 1 && self.l4 == 1 && self.l7 == 1))
     {
         NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
-    else if (self.l2 == self.l5 == self.l8)
+    else if ((self.l2 == 2 && self.l5 == 2 && self.l8 == 2) || (self.l2 == 1 && self.l5 == 1 && self.l8 == 1))
     {
         NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         NSLog(@"HELLLLLLLLLOOO");
         return true;
     }
-    else if (self.l3 == self.l6 == self.l9)
+    else if ((self.l3 == 2 && self.l6 == 2 && self.l9 == 2) || (self.l3 == 1 && self.l6 == 1 && self.l9 == 1))
     {
         NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
-    else if (self.l1 == self.l5 == self.l9)
+    else if ((self.l1 == 2 && self.l5 == 2 && self.l9 == 2) || (self.l1 == 1 && self.l5 == 1 && self.l9 == 1))
     {
         NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
-    else if (self.l7 == self.l5 == self.l3)
+    else if ((self.l7 == 2 && self.l5 == 2 && self.l3 == 2) || (self.l7 == 1 && self.l5 == 1 && self.l3 == 1))
     {
         NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
@@ -411,13 +418,14 @@
         if (gesture.state == UIGestureRecognizerStateEnded)
         {
             [self findLabelUsingPoint:touchPoint sendInLabel:self.xLabel whichPlayer:YES];
+            NSLog(@"\nPlayer 1");
 
             if ([self whoWon])
             {
                 [self.timer invalidate];
                 UIAlertView *playerOneWonAlert = [[UIAlertView alloc]init];
                 playerOneWonAlert.title = @"PLAYER ONE WON";
-                [playerOneWonAlert addButtonWithTitle:@"Dismiss"];
+                [playerOneWonAlert addButtonWithTitle:@"Restart"];
                 [playerOneWonAlert show];
             }
 
@@ -431,7 +439,7 @@
         if (gesture.state == UIGestureRecognizerStateEnded)
         {
             [self findLabelUsingPoint:touchPoint sendInLabel:self.oLabel whichPlayer:NO];
-
+            NSLog(@"\nPlayer 2");
             if ([self whoWon])
             {
                 NSLog(@"\nHERE");
