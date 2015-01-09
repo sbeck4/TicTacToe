@@ -35,6 +35,8 @@
 @property BOOL playerOnePlaying;
 @property (strong, nonatomic) IBOutlet UILabel *timerLabel;
 @property NSTimer *timer;
+@property (strong, nonatomic) IBOutlet UIButton *onButtonPressedRestart;
+@property UIPanGestureRecognizer *panGesture;
 
 
 @end
@@ -57,6 +59,8 @@
     self.l9 = 11;
     self.counter = 0;
     //[self startCountdown];
+    self.onButtonPressedRestart.hidden = YES;
+
 
 }
 
@@ -71,7 +75,7 @@
 
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1
                                                       target:self
-                                                    selector:@selector(countdownTimer)
+                                                selector:@selector(countdownTimer)
                                                     userInfo:nil
                                                      repeats:YES];
 }
@@ -83,6 +87,25 @@
     if (self.timerCounter <= 0)
     {
         [self.timer invalidate];
+
+        if (self.playerOnePlaying)
+        {
+            self.xLabel.hidden = YES;
+            self.oLabel.hidden = NO;
+            [self.timer invalidate];
+            [self startCountdown];
+            self.playerOnePlaying = NO;
+        }
+        else
+        {
+            self.xLabel.hidden = NO;
+            self.oLabel.hidden = YES;
+            [self.timer invalidate];
+            [self startCountdown];
+            self.playerOnePlaying = YES;
+        }
+
+       // self.playerOnePlaying = !self.playerOnePlaying;
     }
 }
 
@@ -335,11 +358,6 @@
 
 }
 
-- (void)disableButtons
-{
-    self.oLabel.enabled = NO;
-    self.xLabel.enabled = NO;
-}
 
 
 - (BOOL)whoWon
@@ -404,12 +422,13 @@
         playerDrawAlert.title = @"IT'S A DRAW!";
         [playerDrawAlert addButtonWithTitle:@"Dismiss"];
         [playerDrawAlert show];
+        self.panGesture.enabled = NO;
     }
 }
 
 - (IBAction)panHandler:(UIPanGestureRecognizer *)gesture
 {
-
+    self.panGesture = gesture;
     CGPoint touchPoint = [gesture locationInView:self.view];
 
     if (self.playerOnePlaying == YES)
@@ -425,8 +444,11 @@
                 [self.timer invalidate];
                 UIAlertView *playerOneWonAlert = [[UIAlertView alloc]init];
                 playerOneWonAlert.title = @"PLAYER ONE WON";
-                [playerOneWonAlert addButtonWithTitle:@"Restart"];
+                [playerOneWonAlert addButtonWithTitle:@"Dismiss"];
                 [playerOneWonAlert show];
+                self.onButtonPressedRestart.hidden = NO;
+
+                gesture.enabled = NO;
             }
 
              [self itsADraw];
@@ -448,6 +470,9 @@
                 playerTwoWonAlert.title = @"PLAYER TWO WON";
                 [playerTwoWonAlert addButtonWithTitle:@"Dismiss"];
                 [playerTwoWonAlert show];
+                self.onButtonPressedRestart.hidden = NO;
+
+                gesture.enabled = NO;
             }
 
             [self itsADraw];
@@ -460,7 +485,10 @@
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    //self.onButtonPressedRestart.hidden = NO;
+
     [alertView dismissWithClickedButtonIndex:0 animated:YES];
+
 }
 
 

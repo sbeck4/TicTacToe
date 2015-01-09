@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83204A701A609ACB0005D6A3 /* WebPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83204A6F1A609ACB0005D6A3 /* WebPlayerViewController.m */; };
+		83204A731A609AE80005D6A3 /* WebComputerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83204A721A609AE80005D6A3 /* WebComputerViewController.m */; };
 		83F4F4261A5F25230089D433 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F4F4251A5F25230089D433 /* main.m */; };
 		83F4F4291A5F25230089D433 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F4F4281A5F25230089D433 /* AppDelegate.m */; };
 		83F4F42C1A5F25230089D433 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F4F42B1A5F25230089D433 /* ViewController.m */; };
@@ -29,6 +31,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		83204A6E1A609ACB0005D6A3 /* WebPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebPlayerViewController.h; sourceTree = "<group>"; };
+		83204A6F1A609ACB0005D6A3 /* WebPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebPlayerViewController.m; sourceTree = "<group>"; };
+		83204A711A609AE80005D6A3 /* WebComputerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebComputerViewController.h; sourceTree = "<group>"; };
+		83204A721A609AE80005D6A3 /* WebComputerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebComputerViewController.m; sourceTree = "<group>"; };
 		83F4F4201A5F25230089D433 /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F4F4241A5F25230089D433 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83F4F4251A5F25230089D433 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -92,6 +98,10 @@
 				83F4F42A1A5F25230089D433 /* ViewController.h */,
 				83F4F42B1A5F25230089D433 /* ViewController.m */,
 				83F4F42D1A5F25230089D433 /* Main.storyboard */,
+				83204A6E1A609ACB0005D6A3 /* WebPlayerViewController.h */,
+				83204A6F1A609ACB0005D6A3 /* WebPlayerViewController.m */,
+				83204A711A609AE80005D6A3 /* WebComputerViewController.h */,
+				83204A721A609AE80005D6A3 /* WebComputerViewController.m */,
 				83F4F44C1A5F7F010089D433 /* ComputerPlayerViewController.h */,
 				83F4F44D1A5F7F010089D433 /* ComputerPlayerViewController.m */,
 				83F4F4491A5F52070089D433 /* BeginningViewController.h */,
@@ -231,8 +241,10 @@
 			files = (
 				83F4F44B1A5F52070089D433 /* BeginningViewController.m in Sources */,
 				83F4F44E1A5F7F010089D433 /* ComputerPlayerViewController.m in Sources */,
+				83204A731A609AE80005D6A3 /* WebComputerViewController.m in Sources */,
 				83F4F42C1A5F25230089D433 /* ViewController.m in Sources */,
 				83F4F4291A5F25230089D433 /* AppDelegate.m in Sources */,
+				83204A701A609ACB0005D6A3 /* WebPlayerViewController.m in Sources */,
 				83F4F4261A5F25230089D433 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,6 +436,7 @@
 				83F4F4451A5F25230089D433 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		83F4F4461A5F25230089D433 /* Build configuration list for PBXNativeTarget "TicTacToeTests" */ = {
 			isa = XCConfigurationList;
@@ -432,6 +445,7 @@
 				83F4F4481A5F25230089D433 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -34,6 +34,8 @@
 @property BOOL playerOnePlaying;
 @property (strong, nonatomic) IBOutlet UILabel *timerLabel;
 @property NSTimer *timer;
+@property (strong, nonatomic) IBOutlet UIButton *onButtonPressedRestart;
+@property UIPanGestureRecognizer *panGesture;
 
 
 @end
@@ -55,6 +57,8 @@
     self.l9 = 11;
     self.counter = 0;
     //[self startCountdown];
+    self.onButtonPressedRestart.hidden = YES;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -149,6 +153,7 @@
 {
     if (self.counter == 9)
     {
+        self.panGesture.enabled = NO;
         return true;
     }
     else
@@ -159,7 +164,7 @@
 
 - (IBAction)panHandler:(UIPanGestureRecognizer *)gesture
 {
-
+    self.panGesture = gesture;
     CGPoint touchPoint = [gesture locationInView:self.view];
 
     if (self.playerOnePlaying == YES)
@@ -175,6 +180,8 @@
                 playerOneWonAlert.title = @"PLAYER ONE WON";
                 [playerOneWonAlert addButtonWithTitle:@"Dismiss"];
                 [playerOneWonAlert show];
+                self.onButtonPressedRestart.hidden = NO;
+                 self.panGesture.enabled = NO;
             }
             else if ([self itsADraw])
             {
@@ -183,6 +190,8 @@
                 playerDrawAlert.title = @"IT'S A DRAW!";
                 [playerDrawAlert addButtonWithTitle:@"Dismiss"];
                 [playerDrawAlert show];
+                self.onButtonPressedRestart.hidden = NO;
+                 self.panGesture.enabled = NO;
             }
             else
             {
@@ -193,12 +202,7 @@
         }
 
     }
-//    else
-//    {
-//            [self computerPlays];
-//
-//
-//    }
+
 }
 
 
@@ -748,15 +752,13 @@
         }
     }
 
-    //self.playerOnePlaying = YES;
-
     if ([self whoWon])
     {
         NSLog(@"\nHERE");
         [self.timer invalidate];
         UIAlertView *playerTwoWonAlert = [[UIAlertView alloc]init];
         playerTwoWonAlert.title = @"PLAYER TWO WON";
-        [playerTwoWonAlert addButtonWithTitle:@"Dismiss"];
+        [playerTwoWonAlert addButtonWithTitle:@"Play Again"];
         [playerTwoWonAlert show];
     }
     else
