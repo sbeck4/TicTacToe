@@ -31,7 +31,9 @@
 @property int l8;
 @property int l9;
 @property int counter;
+@property int timerCounter;
 @property BOOL playerOnePlaying;
+@property (strong, nonatomic) IBOutlet UILabel *timerLabel;
 
 
 @end
@@ -41,22 +43,41 @@
 - (void)viewDidLoad {
     self.playerOnePlaying = YES;
     [super viewDidLoad];
-     self.oLabel.hidden = YES;
-     self.l1 = 3;
-     self.l2 = 4;
-     self.l3 = 5;
-     self.l4 = 6;
-     self.l5 = 7;
-     self.l6 = 8;
-     self.l7 = 9;
-     self.l8 = 10;
-     self.l9 = 11;
+    self.oLabel.hidden = YES;
+    self.l1 = 3;
+    self.l2 = 4;
+    self.l3 = 5;
+    self.l4 = 6;
+    self.l5 = 7;
+    self.l6 = 8;
+    self.l7 = 9;
+    self.l8 = 10;
+    self.l9 = 11;
     self.counter = 0;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)startCountdown
+{
+    self.timerCounter = 30;
+
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                      target:self
+                                                    selector:@selector(countdownTimer:)
+                                                    userInfo:nil
+                                                     repeats:YES];
+}
+
+- (void)countdownTimer:(NSTimer *)timer
+{
+    self.timerCounter--;
+    if (_counter <= 0) {
+        [timer invalidate];
+    }
 }
 
 - (void)findLabelUsingPoint:(CGPoint)point sendInLabel:(UILabel *)label whichPlayer:(BOOL)player
@@ -296,47 +317,38 @@
 
     if (self.l1 == self.l2 == self.l3)
     {
-         NSLog(@" I'M HERE %i : %i : %i : %i : %i : %i : %i : %i : %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
     else if (self.l4 == self.l5 == self.l6)
     {
-         NSLog(@" NOW I'M HERE %i : %i : %i : %i : %i : %i : %i : %i : %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
     else if (self.l7 == self.l8 == self.l9)
     {
-         NSLog(@"LOOK HERE %i : %i : %i : %i : %i : %i : %i : %i : %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
     else if (self.l1 == self.l4 == self.l7)
     {
-         NSLog(@"HEY HEY%i : %i : %i : %i : %i : %i : %i : %i : %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
     else if (self.l2 == self.l5 == self.l8)
     {
-         NSLog(@"OH WOW %i : %i : %i : %i : %i : %i : %i : %i : %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
     else if (self.l3 == self.l6 == self.l9)
     {
-         NSLog(@"NICE JOB %i : %i : %i : %i : %i : %i : %i : %i : %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
     else if (self.l1 == self.l5 == self.l9)
     {
-        NSLog(@"NICE JOB %i : %i : %i : %i : %i : %i : %i : %i : %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
     else if (self.l7 == self.l5 == self.l3)
     {
-        NSLog(@"NICE JOB %i : %i : %i : %i : %i : %i : %i : %i : %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
     else
     {
-         NSLog(@"SHANNON ROCKS %i : %i : %i : %i : %i : %i : %i : %i : %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return false;
     }
 

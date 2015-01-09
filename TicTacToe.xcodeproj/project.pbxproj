@@ -14,6 +14,7 @@
 		83F4F4311A5F25230089D433 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83F4F4301A5F25230089D433 /* Images.xcassets */; };
 		83F4F4341A5F25230089D433 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83F4F4321A5F25230089D433 /* LaunchScreen.xib */; };
 		83F4F4401A5F25230089D433 /* TicTacToeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F4F43F1A5F25230089D433 /* TicTacToeTests.m */; };
+		83F4F44B1A5F52070089D433 /* BeginningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83F4F44A1A5F52070089D433 /* BeginningViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		83F4F4391A5F25230089D433 /* TicTacToeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TicTacToeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83F4F43E1A5F25230089D433 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83F4F43F1A5F25230089D433 /* TicTacToeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TicTacToeTests.m; sourceTree = "<group>"; };
+		83F4F4491A5F52070089D433 /* BeginningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeginningViewController.h; sourceTree = "<group>"; };
+		83F4F44A1A5F52070089D433 /* BeginningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeginningViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				83F4F42A1A5F25230089D433 /* ViewController.h */,
 				83F4F42B1A5F25230089D433 /* ViewController.m */,
 				83F4F42D1A5F25230089D433 /* Main.storyboard */,
+				83F4F4491A5F52070089D433 /* BeginningViewController.h */,
+				83F4F44A1A5F52070089D433 /* BeginningViewController.m */,
 				83F4F4301A5F25230089D433 /* Images.xcassets */,
 				83F4F4321A5F25230089D433 /* LaunchScreen.xib */,
 				83F4F4231A5F25230089D433 /* Supporting Files */,
@@ -219,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83F4F44B1A5F52070089D433 /* BeginningViewController.m in Sources */,
 				83F4F42C1A5F25230089D433 /* ViewController.m in Sources */,
 				83F4F4291A5F25230089D433 /* AppDelegate.m in Sources */,
 				83F4F4261A5F25230089D433 /* main.m in Sources */,
