@@ -71,6 +71,7 @@
             self.labelOne.text = @"X";
             self.l1 = 1;
             self.playerOnePlaying = NO;
+            self.whichPlayerLabel.text = @"Player O";
         }
 
         if (!player && (self.l1 == 3))
@@ -81,6 +82,7 @@
             self.labelOne.text = @"O";
             self.l1 = 2;
             self.playerOnePlaying = YES;
+            self.whichPlayerLabel.text = @"Player X";
         }
     }
 
@@ -94,6 +96,7 @@
             self.labelTwo.text = @"X";
             self.l2 = 1;
             self.playerOnePlaying = NO;
+            self.whichPlayerLabel.text = @"Player O";
         }
 
         if (!player && (self.l2 == 4))
@@ -104,6 +107,7 @@
             self.labelTwo.text = @"O";
             self.l2 = 2;
             self.playerOnePlaying = YES;
+            self.whichPlayerLabel.text = @"Player X";
         }
     }
 
@@ -117,6 +121,7 @@
             self.labelThree.text = @"X";
             self.l3 = 1;
             self.playerOnePlaying = NO;
+            self.whichPlayerLabel.text = @"Player O";
         }
 
         if (!player && (self.l3 == 5))
@@ -127,6 +132,7 @@
             self.labelThree.text = @"O";
             self.l3 = 2;
             self.playerOnePlaying = YES;
+            self.whichPlayerLabel.text = @"Player X";
         }
     }
 
@@ -140,6 +146,7 @@
             self.labelFour.text = @"X";
             self.l4 = 1;
             self.playerOnePlaying = NO;
+            self.whichPlayerLabel.text = @"Player O";
         }
 
         if (!player && (self.l4 == 6))
@@ -150,6 +157,7 @@
             self.labelFour.text = @"O";
             self.l4 = 2;
             self.playerOnePlaying = YES;
+            self.whichPlayerLabel.text = @"Player X";
         }
     }
 
@@ -163,6 +171,7 @@
             self.labelFive.text = @"X";
             self.l5 = 1;
             self.playerOnePlaying = NO;
+            self.whichPlayerLabel.text = @"Player O";
         }
 
         if (!player && (self.l5 == 7))
@@ -173,6 +182,7 @@
             self.labelFive.text = @"O";
             self.l5 = 2;
             self.playerOnePlaying = YES;
+            self.whichPlayerLabel.text = @"Player X";
         }
     }
 
@@ -186,9 +196,11 @@
             self.labelSix.text = @"X";
             self.l6 = 1;
             self.playerOnePlaying = NO;
+            self.whichPlayerLabel.text = @"Player O";
+
         }
 
-        if (!player && (self.l5 == 8))
+        if (!player && (self.l6 == 8))
         {
             self.counter++;
             self.oLabel.hidden = YES;
@@ -196,6 +208,7 @@
             self.labelSix.text = @"O";
             self.l6 = 2;
             self.playerOnePlaying = YES;
+            self.whichPlayerLabel.text = @"Player X";
         }
     }
 
@@ -209,6 +222,7 @@
             self.labelSeven.text = @"X";
             self.l7 = 1;
             self.playerOnePlaying = NO;
+            self.whichPlayerLabel.text = @"Player O";
         }
 
         if (!player && (self.l7 == 9))
@@ -219,6 +233,7 @@
             self.labelSeven.text = @"O";
             self.l7 = 2;
             self.playerOnePlaying = YES;
+            self.whichPlayerLabel.text = @"Player X";
         }
     }
 
@@ -232,6 +247,7 @@
             self.labelEight.text = @"X";
             self.l8 = 1;
             self.playerOnePlaying = NO;
+            self.whichPlayerLabel.text = @"Player O";
         }
 
         if (!player && (self.l8 == 10))
@@ -242,6 +258,7 @@
             self.labelEight.text = @"O";
             self.l8 = 2;
             self.playerOnePlaying = YES;
+            self.whichPlayerLabel.text = @"Player X";
         }
     }
 
@@ -255,6 +272,7 @@
             self.labelNine.text = @"X";
             self.l9 = 1;
             self.playerOnePlaying = NO;
+            self.whichPlayerLabel.text = @"Player O";
         }
 
         if (!player && (self.l9 == 11))
@@ -265,6 +283,7 @@
             self.labelNine.text = @"O";
             self.l9 = 2;
             self.playerOnePlaying = YES;
+            self.whichPlayerLabel.text = @"Player X";
         }
     }
 
@@ -349,6 +368,7 @@
             {
                 UIAlertView *playerOneWonAlert = [[UIAlertView alloc]init];
                 playerOneWonAlert.title = @"PLAYER ONE WON";
+                [playerOneWonAlert addButtonWithTitle:@"Dismiss"];
                 [playerOneWonAlert show];
             }
 
@@ -366,14 +386,20 @@
             NSLog(@"\nHERE");
             if ([self whoWon])
             {
-                UIAlertView *playerOneWonAlert = [[UIAlertView alloc]init];
-                playerOneWonAlert.title = @"PLAYER TWO WON";
-                [playerOneWonAlert show];
+                UIAlertView *playerTwoWonAlert = [[UIAlertView alloc]init];
+                playerTwoWonAlert.title = @"PLAYER TWO WON";
+                [playerTwoWonAlert addButtonWithTitle:@"Dismiss"];
+                [playerTwoWonAlert show];
             }
 
             [self itsADraw];
         }
     }
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [alertView dismissWithClickedButtonIndex:0 animated:YES];
 }
 
 
