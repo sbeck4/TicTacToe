@@ -34,6 +34,7 @@
 @property int timerCounter;
 @property BOOL playerOnePlaying;
 @property (strong, nonatomic) IBOutlet UILabel *timerLabel;
+@property NSTimer *timer;
 
 
 @end
@@ -41,8 +42,9 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-    self.playerOnePlaying = YES;
     [super viewDidLoad];
+
+    self.playerOnePlaying = YES;
     self.oLabel.hidden = YES;
     self.l1 = 3;
     self.l2 = 4;
@@ -54,6 +56,8 @@
     self.l8 = 10;
     self.l9 = 11;
     self.counter = 0;
+    //[self startCountdown];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,18 +69,20 @@
 {
     self.timerCounter = 30;
 
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1
                                                       target:self
-                                                    selector:@selector(countdownTimer:)
+                                                    selector:@selector(countdownTimer)
                                                     userInfo:nil
                                                      repeats:YES];
 }
 
-- (void)countdownTimer:(NSTimer *)timer
+- (void)countdownTimer
 {
     self.timerCounter--;
-    if (_counter <= 0) {
-        [timer invalidate];
+    self.timerLabel.text = [NSString stringWithFormat:@"%i", self.timerCounter];
+    if (self.timerCounter <= 0)
+    {
+        [self.timer invalidate];
     }
 }
 
@@ -92,7 +98,8 @@
             self.labelOne.text = @"X";
             self.l1 = 1;
             self.playerOnePlaying = NO;
-            self.whichPlayerLabel.text = @"Player O";
+            [self.timer invalidate];
+            [self startCountdown];
         }
 
         if (!player && (self.l1 == 3))
@@ -103,7 +110,8 @@
             self.labelOne.text = @"O";
             self.l1 = 2;
             self.playerOnePlaying = YES;
-            self.whichPlayerLabel.text = @"Player X";
+            [self.timer invalidate];
+            [self startCountdown];
         }
     }
 
@@ -117,7 +125,8 @@
             self.labelTwo.text = @"X";
             self.l2 = 1;
             self.playerOnePlaying = NO;
-            self.whichPlayerLabel.text = @"Player O";
+            [self.timer invalidate];
+            [self startCountdown];
         }
 
         if (!player && (self.l2 == 4))
@@ -128,7 +137,8 @@
             self.labelTwo.text = @"O";
             self.l2 = 2;
             self.playerOnePlaying = YES;
-            self.whichPlayerLabel.text = @"Player X";
+            [self.timer invalidate];
+            [self startCountdown];
         }
     }
 
@@ -142,7 +152,8 @@
             self.labelThree.text = @"X";
             self.l3 = 1;
             self.playerOnePlaying = NO;
-            self.whichPlayerLabel.text = @"Player O";
+            [self.timer invalidate];
+            [self startCountdown];
         }
 
         if (!player && (self.l3 == 5))
@@ -153,7 +164,8 @@
             self.labelThree.text = @"O";
             self.l3 = 2;
             self.playerOnePlaying = YES;
-            self.whichPlayerLabel.text = @"Player X";
+            [self.timer invalidate];
+            [self startCountdown];
         }
     }
 
@@ -167,7 +179,8 @@
             self.labelFour.text = @"X";
             self.l4 = 1;
             self.playerOnePlaying = NO;
-            self.whichPlayerLabel.text = @"Player O";
+            [self.timer invalidate];
+            [self startCountdown];
         }
 
         if (!player && (self.l4 == 6))
@@ -178,7 +191,8 @@
             self.labelFour.text = @"O";
             self.l4 = 2;
             self.playerOnePlaying = YES;
-            self.whichPlayerLabel.text = @"Player X";
+            [self.timer invalidate];
+            [self startCountdown];
         }
     }
 
@@ -192,7 +206,8 @@
             self.labelFive.text = @"X";
             self.l5 = 1;
             self.playerOnePlaying = NO;
-            self.whichPlayerLabel.text = @"Player O";
+            [self.timer invalidate];
+            [self startCountdown];
         }
 
         if (!player && (self.l5 == 7))
@@ -203,7 +218,8 @@
             self.labelFive.text = @"O";
             self.l5 = 2;
             self.playerOnePlaying = YES;
-            self.whichPlayerLabel.text = @"Player X";
+            [self.timer invalidate];
+            [self startCountdown];
         }
     }
 
@@ -217,8 +233,8 @@
             self.labelSix.text = @"X";
             self.l6 = 1;
             self.playerOnePlaying = NO;
-            self.whichPlayerLabel.text = @"Player O";
-
+            [self.timer invalidate];
+            [self startCountdown];
         }
 
         if (!player && (self.l6 == 8))
@@ -229,7 +245,8 @@
             self.labelSix.text = @"O";
             self.l6 = 2;
             self.playerOnePlaying = YES;
-            self.whichPlayerLabel.text = @"Player X";
+            [self.timer invalidate];
+            [self startCountdown];
         }
     }
 
@@ -243,7 +260,8 @@
             self.labelSeven.text = @"X";
             self.l7 = 1;
             self.playerOnePlaying = NO;
-            self.whichPlayerLabel.text = @"Player O";
+            [self.timer invalidate];
+            [self startCountdown];
         }
 
         if (!player && (self.l7 == 9))
@@ -254,7 +272,8 @@
             self.labelSeven.text = @"O";
             self.l7 = 2;
             self.playerOnePlaying = YES;
-            self.whichPlayerLabel.text = @"Player X";
+            [self.timer invalidate];
+            [self startCountdown];
         }
     }
 
@@ -268,7 +287,8 @@
             self.labelEight.text = @"X";
             self.l8 = 1;
             self.playerOnePlaying = NO;
-            self.whichPlayerLabel.text = @"Player O";
+            [self.timer invalidate];
+            [self startCountdown];
         }
 
         if (!player && (self.l8 == 10))
@@ -279,7 +299,8 @@
             self.labelEight.text = @"O";
             self.l8 = 2;
             self.playerOnePlaying = YES;
-            self.whichPlayerLabel.text = @"Player X";
+            [self.timer invalidate];
+            [self startCountdown];
         }
     }
 
@@ -293,7 +314,8 @@
             self.labelNine.text = @"X";
             self.l9 = 1;
             self.playerOnePlaying = NO;
-            self.whichPlayerLabel.text = @"Player O";
+            [self.timer invalidate];
+            [self startCountdown];
         }
 
         if (!player && (self.l9 == 11))
@@ -304,7 +326,8 @@
             self.labelNine.text = @"O";
             self.l9 = 2;
             self.playerOnePlaying = YES;
-            self.whichPlayerLabel.text = @"Player X";
+            [self.timer invalidate];
+            [self startCountdown];
         }
     }
 
@@ -317,38 +340,48 @@
 
     if (self.l1 == self.l2 == self.l3)
     {
+        NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
     else if (self.l4 == self.l5 == self.l6)
     {
+        NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
     else if (self.l7 == self.l8 == self.l9)
     {
+        NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
     else if (self.l1 == self.l4 == self.l7)
     {
+        NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
     else if (self.l2 == self.l5 == self.l8)
     {
+        NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
+        NSLog(@"HELLLLLLLLLOOO");
         return true;
     }
     else if (self.l3 == self.l6 == self.l9)
     {
+        NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
     else if (self.l1 == self.l5 == self.l9)
     {
+        NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
     else if (self.l7 == self.l5 == self.l3)
     {
+        NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return true;
     }
     else
     {
+        NSLog(@"%i %i %i %i %i %i %i %i %i", self.l1, self.l2, self.l3, self.l4, self.l5, self.l6, self.l7, self.l8, self.l9);
         return false;
     }
 
@@ -359,17 +392,20 @@
 {
     if (self.counter == 9)
     {
+        [self.timer invalidate];
         UIAlertView *playerDrawAlert = [[UIAlertView alloc]init];
         playerDrawAlert.title = @"IT'S A DRAW!";
+        [playerDrawAlert addButtonWithTitle:@"Dismiss"];
         [playerDrawAlert show];
     }
 }
 
 - (IBAction)panHandler:(UIPanGestureRecognizer *)gesture
 {
+
     CGPoint touchPoint = [gesture locationInView:self.view];
 
-    if (self.playerOnePlaying == true)
+    if (self.playerOnePlaying == YES)
     {
         self.xLabel.center = touchPoint;
         if (gesture.state == UIGestureRecognizerStateEnded)
@@ -378,6 +414,7 @@
 
             if ([self whoWon])
             {
+                [self.timer invalidate];
                 UIAlertView *playerOneWonAlert = [[UIAlertView alloc]init];
                 playerOneWonAlert.title = @"PLAYER ONE WON";
                 [playerOneWonAlert addButtonWithTitle:@"Dismiss"];
@@ -395,9 +432,10 @@
         {
             [self findLabelUsingPoint:touchPoint sendInLabel:self.oLabel whichPlayer:NO];
 
-            NSLog(@"\nHERE");
             if ([self whoWon])
             {
+                NSLog(@"\nHERE");
+                [self.timer invalidate];
                 UIAlertView *playerTwoWonAlert = [[UIAlertView alloc]init];
                 playerTwoWonAlert.title = @"PLAYER TWO WON";
                 [playerTwoWonAlert addButtonWithTitle:@"Dismiss"];
@@ -405,7 +443,10 @@
             }
 
             [self itsADraw];
+
+
         }
+
     }
 }
 
