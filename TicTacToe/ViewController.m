@@ -114,13 +114,16 @@
 
 - (void)findLabelUsingPoint:(CGPoint)point sendInLabel:(UILabel *)label whichPlayer:(BOOL)player
 {
-    if (CGRectContainsRect(self.labelOne.frame, label.frame))
+    UIColor *lightOrange = [[UIColor alloc]init];
+    lightOrange = [UIColor colorWithRed:0.98 green:0.80 blue:0.61 alpha:.9];
+        if (CGRectContainsRect(self.labelOne.frame, label.frame))
     {
         if (player && (self.l1 == 3))
         {
             self.counter++;
             self.xLabel.hidden = YES;
             self.oLabel.hidden = NO;
+            self.labelOne.textColor = lightOrange;
             self.labelOne.text = @"X";
             self.l1 = 1;
             self.playerOnePlaying = NO;
@@ -148,6 +151,7 @@
             self.counter++;
             self.xLabel.hidden = YES;
             self.oLabel.hidden = NO;
+            self.labelTwo.textColor = lightOrange;
             self.labelTwo.text = @"X";
             self.l2 = 1;
             self.playerOnePlaying = NO;
@@ -175,6 +179,7 @@
             self.counter++;
             self.xLabel.hidden = YES;
             self.oLabel.hidden = NO;
+            self.labelThree.textColor = lightOrange;
             self.labelThree.text = @"X";
             self.l3 = 1;
             self.playerOnePlaying = NO;
@@ -202,6 +207,7 @@
             self.counter++;
             self.xLabel.hidden = YES;
             self.oLabel.hidden = NO;
+            self.labelFour.textColor = lightOrange;
             self.labelFour.text = @"X";
             self.l4 = 1;
             self.playerOnePlaying = NO;
@@ -229,6 +235,7 @@
             self.counter++;
             self.xLabel.hidden = YES;
             self.oLabel.hidden = NO;
+            self.labelFive.textColor = lightOrange;
             self.labelFive.text = @"X";
             self.l5 = 1;
             self.playerOnePlaying = NO;
@@ -256,6 +263,7 @@
             self.counter++;
             self.xLabel.hidden = YES;
             self.oLabel.hidden = NO;
+            self.labelSix.textColor = lightOrange;
             self.labelSix.text = @"X";
             self.l6 = 1;
             self.playerOnePlaying = NO;
@@ -283,6 +291,7 @@
             self.counter++;
             self.xLabel.hidden = YES;
             self.oLabel.hidden = NO;
+            self.labelSeven.textColor = lightOrange;
             self.labelSeven.text = @"X";
             self.l7 = 1;
             self.playerOnePlaying = NO;
@@ -310,6 +319,7 @@
             self.counter++;
             self.xLabel.hidden = YES;
             self.oLabel.hidden = NO;
+            self.labelEight.textColor = lightOrange;
             self.labelEight.text = @"X";
             self.l8 = 1;
             self.playerOnePlaying = NO;
@@ -337,6 +347,7 @@
             self.counter++;
             self.xLabel.hidden = YES;
             self.oLabel.hidden = NO;
+            self.labelNine.textColor = lightOrange;
             self.labelNine.text = @"X";
             self.l9 = 1;
             self.playerOnePlaying = NO;
