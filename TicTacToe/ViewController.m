@@ -71,13 +71,16 @@
 
 - (void)startCountdown
 {
-    self.timerCounter = 30;
 
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1
+    self.timerCounter = 31;
+
+
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
                                                       target:self
                                                 selector:@selector(countdownTimer)
                                                     userInfo:nil
                                                      repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
 }
 
 - (void)countdownTimer
@@ -423,8 +426,11 @@
         [playerDrawAlert addButtonWithTitle:@"Dismiss"];
         [playerDrawAlert show];
         self.panGesture.enabled = NO;
+        self.onButtonPressedRestart.hidden = NO;
     }
 }
+
+
 
 - (IBAction)panHandler:(UIPanGestureRecognizer *)gesture
 {
@@ -450,8 +456,10 @@
 
                 gesture.enabled = NO;
             }
-
-             [self itsADraw];
+            else
+            {
+                [self itsADraw];
+            }
         }
 
     }
@@ -474,8 +482,10 @@
 
                 gesture.enabled = NO;
             }
-
-            [self itsADraw];
+            else
+            {
+                [self itsADraw];
+            }
 
 
         }

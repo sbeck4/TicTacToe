@@ -69,7 +69,7 @@
 
 - (void)startCountdown
 {
-    self.timerCounter = 30;
+    self.timerCounter = 31;
 
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1
                                                   target:self
@@ -154,6 +154,7 @@
     if (self.counter == 9)
     {
         self.panGesture.enabled = NO;
+        self.onButtonPressedRestart.hidden = NO;
         return true;
     }
     else
@@ -181,7 +182,7 @@
                 [playerOneWonAlert addButtonWithTitle:@"Dismiss"];
                 [playerOneWonAlert show];
                 self.onButtonPressedRestart.hidden = NO;
-                 self.panGesture.enabled = NO;
+                self.panGesture.enabled = NO;
             }
             else if ([self itsADraw])
             {
@@ -195,10 +196,11 @@
             }
             else
             {
-                [self computerPlays];
+                if (self.playerOnePlaying == NO)
+                {
+                    [self computerPlays];
+                }
             }
-
-
         }
 
     }
@@ -757,6 +759,7 @@
         NSLog(@"\nHERE");
         [self.timer invalidate];
         UIAlertView *playerTwoWonAlert = [[UIAlertView alloc]init];
+        self.onButtonPressedRestart.hidden = NO;
         playerTwoWonAlert.title = @"PLAYER TWO WON";
         [playerTwoWonAlert addButtonWithTitle:@"Play Again"];
         [playerTwoWonAlert show];
@@ -768,6 +771,7 @@
 
 
 }
+
 
 - (void)findLabelUsingPoint:(CGPoint)point sendInLabel:(UILabel *)label whichPlayer:(BOOL)player
 {
